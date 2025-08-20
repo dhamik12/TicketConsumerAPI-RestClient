@@ -3,7 +3,7 @@
  
  This is a Rest Client App. 
  
- RestTemplate class is used to connect with Rest Server App 
+ RestTemplate class is used to connect with Rest Server App or 3rd party app at http://localhost:8084/producer/swagger-ui.html
  
  Thymeleaf is used in the front end for client input.
  
