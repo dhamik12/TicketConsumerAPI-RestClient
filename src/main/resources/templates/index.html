@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1" />
+    <title>Ticket Booking Application</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin: 20px 0;
+        }
+
+        .booking-form {
+            width: 60%;
+            margin: 20px auto;
+            background: #fff;
+            padding: 25px 40px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+
+        .booking-form table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .booking-form td {
+            padding: 12px;
+        }
+
+        .booking-form label {
+            font-weight: bold;
+            color: #444;
+        }
+
+        .booking-form input[type="text"],
+        .booking-form input[type="number"],
+        .booking-form input[type="datetime-local"] {
+            width: 95%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .booking-form input[type="submit"] {
+            background: #2c3e50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .booking-form input[type="submit"]:hover {
+            background: #1a242f;
+        }
+
+        .link-section {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .link-section a {
+            color: #2c3e50;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .link-section a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Book Ticket</h1>
+
+    <p th:text="'Generated Ticket Number: ' + ${TicketNumber}"></p>
+
+    <form class="booking-form" th:action="@{/book-ticket}" method="post" th:object="${passenger}">
+        <table>
+            <tr>
+                <td><label for="passengerId">Passenger Id:</label></td>
+                <td><input type="text" th:field="*{passengerId}" id="passengerId"></td>
+            </tr>
+            <tr>
+                <td><label for="name">Name:</label></td>
+                <td><input type="text" th:field="*{name}" id="name"></td>
+            </tr>
+            <tr>
+                <td><label for="age">Age:</label></td>
+                <td><input type="number" th:field="*{age}" id="age"></td>
+            </tr>
+            <tr>
+                <td><label for="gender">Gender:</label></td>
+                <td><input type="text" th:field="*{gender}" id="gender"></td>
+            </tr>
+            <tr>
+                <td><label for="departure">Departure:</label></td>
+                <td><input type="datetime-local" th:field="*{departure}" id="departure"></td>
+            </tr>
+            <tr>
+                <td><label for="boardingAt">Boarding At:</label></td>
+                <td><input type="text" th:field="*{boardingAt}" id="boardingAt"></td>
+            </tr>
+            <tr>
+                <td><label for="destination">Destination:</label></td>
+                <td><input type="text" th:field="*{destination}" id="destination"></td>
+            </tr>
+            <tr>
+                <td><label for="arrival">Arrival:</label></td>
+                <td><input type="datetime-local" th:field="*{arrival}" id="arrival"></td>
+            </tr>
+            <tr>
+                <td><label for="trainNumber">Train Number:</label></td>
+                <td><input type="text" th:field="*{trainNumber}" id="trainNumber"></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <input type="submit" value="Submit Ticket">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <div class="link-section">
+        <a th:href="@{/check-full-ticket}">Check full ticket</a>
+    </div>
+</body>
+</html>
